@@ -29,6 +29,9 @@ const Home: NextPage = () => {
           <video
             src="https://websites.godaddy.com/categories/v4/videos/raw/video/uGbA6v1EwwF20VGXJ"
             className="w-full"
+            loop
+            autoPlay
+            muted
           ></video>
           <div className="w-full text-white absolute inset-0 pt-48">
             <h1 className="text-4xl font-bold text-center px-16 text-shadow">
