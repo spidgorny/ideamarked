@@ -34,11 +34,23 @@ export const authOptions = {
         }
         return {
           id: user.sys.id,
+          name: user.fields.name,
+          email: user.fields.email,
+          image: null,
           ...user,
         };
       },
     }),
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      console.log({ session, token, user });
+      session.accessToken = token.accessToken;
+      session.user.id = token.id;
+
+      return session;
+    },
+  },
 };
 export default NextAuth(authOptions);
 
