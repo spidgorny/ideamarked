@@ -43,7 +43,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </Link>
         {session?.user && (
           <>
-            Signed in as {session.user?.fields?.email} <br />
+            Signed in as {session.user?.email} <br />
             <button
               onClick={() => signOut()}
               className="p-1 bg-zinc-400 rounded"
