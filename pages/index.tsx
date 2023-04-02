@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { Layout } from "../components/layout";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -21,12 +22,12 @@ const Home: NextPage = () => {
               Make yourself free and post your business idea or ideas.
             </h2>
             <div className="text-center">
-              <a
+              <Link
                 href="/ideas/create"
                 className="bg-[#028390] px-5 py-3 text-sm"
               >
                 POST YOUR IDEA
-              </a>
+              </Link>
             </div>
           </div>
         </div>

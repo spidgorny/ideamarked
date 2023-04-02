@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { getUserByEmail } from "../../../lib/contentful";
+import { getUserByEmail } from "../../../lib/db";
 import bcrypt from "bcrypt";
 import { store } from "next/dist/build/output/store";
 
@@ -21,12 +21,12 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         const user = await getUserByEmail(credentials?.email ?? "");
-        console.log("login user", user);
+        // console.log("login user", user);
         if (!user) {
           return null;
         }
-        const hash = await hashPassword(credentials.password);
-        console.log(credentials.password, "=>", hash);
+        // const hash = await hashPassword(credentials.password);
+        // console.log(credentials.password, "=>", hash);
         if (
           !(await checkPassword(credentials.password, user.fields.password))
         ) {
@@ -43,10 +43,17 @@ export const authOptions = {
     }),
   ],
   callbacks: {
+    async jwt({ token, user, account, profile, isNewUser }) {
+      // console.log("jwt callback", { token, user, account, profile, isNewUser });
+      if (user) {
+        token.user = user;
+      }
+      return token;
+    },
     async session({ session, token, user }) {
-      console.log({ session, token, user });
-      session.accessToken = token.accessToken;
-      session.user.id = token.id;
+      // console.log("session callback", { session, token, user });
+      // session.accessToken = token.accessToken;
+      session.user.id = token.user.id;
 
       return session;
     },

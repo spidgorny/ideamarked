@@ -1,19 +1,35 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import cn from "classnames";
 
 export function Layout({ children }: { children: ReactNode }) {
   const { data: session } = useSession();
+  const router = useRouter();
+  const page = {
+    home: router.asPath === "/",
+    ideas: router.asPath.includes("/ideas"),
+    "for-investors": router.asPath === "/for-investors",
+    faq: router.asPath === "/faq",
+    contact: router.asPath === "/contact",
+  };
+
+  const active = "active text-[#008e9c] underline underline-offset-4 font-bold";
+
   return (
     <div id="layout">
       <div className="py-5 px-10 active:text-[#008e9c] text-bold flex flex-row justify-end gap-5 active:underline underline-offset-4">
         <Link
           href="/"
-          className="active text-[#008e9c] hover:text-[#00d2e6] underline underline-offset-4 font-bold"
+          className={cn("hover:text-[#00d2e6]", { [active]: page.home })}
         >
           HOME
         </Link>
-        <Link href="/ideas" className="hover:text-[#00d2e6]">
+        <Link
+          href="/ideas"
+          className={cn("hover:text-[#00d2e6]", { [active]: page.ideas })}
+        >
           IDEAS
         </Link>
         <Link href="/for-investors" className="hover:text-[#00d2e6]">
