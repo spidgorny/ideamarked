@@ -16,27 +16,31 @@ export default function () {
 
   return (
     <Layout>
-      <img
-        src="https://img1.wsimg.com/isteam/stock/1580/:/cr=t:5.07%25,l:0%25,w:89.86%25,h:89.86%25/rs=w:100%25"
-        style={{ height: "300px", objectFit: "cover", width: "100%" }}
-      />
+      <div className="container mx-auto max-w-6xl">
+        <img
+          src="https://img1.wsimg.com/isteam/stock/1580/:/cr=t:5.07%25,l:0%25,w:89.86%25,h:89.86%25/rs=w:100%25"
+          style={{ height: "300px", objectFit: "cover", width: "100%" }}
+        />
 
-      <div className="text-center -mt-16 mb-16">
-        <Link href="/ideas/create" className="bg-[#028390] px-5 py-3 text-sm">
-          POST YOUR IDEA
-        </Link>
+        <div className="text-center -mt-16 mb-16">
+          <Link href="/ideas/create" className="bg-[#028390] px-5 py-3 text-sm">
+            POST YOUR IDEA
+          </Link>
+        </div>
+
+        <div className="flex flex-row flex-wrap gap-3">
+          {ideas.map((x) => (
+            <Idea key={x.id} idea={x} />
+          ))}
+        </div>
       </div>
-
-      {ideas.map((x) => (
-        <Idea key={x.id} idea={x} />
-      ))}
     </Layout>
   );
 }
 
 export function Idea({ idea }) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-[32%] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link href={"/ideas/" + idea.id}>
         <Image
           className="rounded-t-lg cover"

@@ -53,7 +53,7 @@ export default function Component() {
 
   return (
     <Layout>
-      <div className="container mx-auto p-3 max-w-4xl border">
+      <div className="container mx-auto p-3 max-w-6xl border">
         <h3 className="text-2xl mb-3">Post your idea:</h3>
         <form onSubmit={onSubmit}>
           {form.render()}

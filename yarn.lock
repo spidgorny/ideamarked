@@ -2649,7 +2649,7 @@ react-dom@18.2.0:
 
 "react-helpers@https://github.com/spidgorny/react-helpers":
   version "0.0.0"
-  resolved "https://github.com/spidgorny/react-helpers#8da340d5cbc83cb102455c709342893803faa0b8"
+  resolved "https://github.com/spidgorny/react-helpers#0581f2d4e6a48483d62ab05ed407120c9299bd35"
 
 react-is@^16.13.1, react-is@^16.3.2:
   version "16.13.1"
