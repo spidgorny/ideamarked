@@ -2,9 +2,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { getUserByEmail } from "../../../lib/db";
 import bcrypt from "bcrypt";
-import { store } from "next/dist/build/output/store";
-
-// console.log({ CredentialsProvider });
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -27,15 +24,13 @@ export const authOptions = {
         }
         // const hash = await hashPassword(credentials.password);
         // console.log(credentials.password, "=>", hash);
-        if (
-          !(await checkPassword(credentials.password, user.fields.password))
-        ) {
+        if (!(await checkPassword(credentials.password, user.password))) {
           return null;
         }
         return {
-          id: user.sys.id,
-          name: user.fields.name,
-          email: user.fields.email,
+          id: user.id,
+          name: user.name,
+          email: user.email,
           image: null,
           ...user,
         };

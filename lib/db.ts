@@ -19,6 +19,11 @@ export async function getIdeas() {
   return tIdea.select({});
 }
 
+export async function getIdeaById(id: string) {
+  const tIdea = getDb().getTable("idea");
+  return tIdea.selectOne({ id });
+}
+
 export async function postIdea(formData) {
   const tIdea = getDb().getTable("idea");
   const { insertId } = await tIdea.insert(formData);

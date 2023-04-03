@@ -42,15 +42,15 @@ export function Layout({ children }: { children: ReactNode }) {
           CONTACT US
         </Link>
         {session?.user && (
-          <>
-            Signed in as {session.user?.email} <br />
+          <div className="bg-zinc-900 rounded flex gap-3">
+            {session.user?.email}
             <button
               onClick={() => signOut()}
               className="p-1 bg-zinc-400 rounded"
             >
               Sign out
             </button>
-          </>
+          </div>
         )}
       </div>
       {children}

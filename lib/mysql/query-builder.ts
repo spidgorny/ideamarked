@@ -1,6 +1,6 @@
 import Builder from "json-sql";
 import invariant from "tiny-invariant";
-import { isPlainObject } from "../object";
+import { isPlainObject } from "react-helpers/lib/object";
 
 const jsonSql = Builder({
   namedValues: false,

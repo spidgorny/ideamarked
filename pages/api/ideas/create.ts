@@ -3,13 +3,14 @@ import { simpleApiHandler } from "../../../lib/api";
 import { postIdea } from "../../../lib/db";
 import { nanoid } from "nanoid";
 
-type Data = {
+export type Idea = {
   name: string;
+  description: string;
 };
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Idea>
 ) {
   return simpleApiHandler(req, res, async (user) => {
     console.log(user);
